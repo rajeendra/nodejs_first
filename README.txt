@@ -33,3 +33,9 @@ Kicking off the app
     "scripts": {
         "watch": "nodemon ./start.js"
     },
+
+    Run service
+        npm run watch
+
+Run test script:  
+    npm run test    
