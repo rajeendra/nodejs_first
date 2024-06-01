@@ -40,7 +40,7 @@ console.log(b.duration?true:false) // true
 line('1. Fuction')
 // Function
 const addFun = (a, b) => a + b;
-const subFun = (a, b) => a - b;
+const subFun = (a, b) => { return(a - b)};
 
 console.log(addFun(2, 3));
 console.log(subFun(12, 3));
@@ -56,7 +56,7 @@ console.log(add(2, 3));
 console.log(sub(12, 3));
 
 //
-line("1.1. execute a function name inside a variable");
+line("1.1. run a function, the name in a string");
 const functionName = "addFun";
 const result = eval(functionName + "(" + 2 + ", " + 3 + ")"); 
 console.log(result);
@@ -478,68 +478,67 @@ const strings = () => {
 }
 
 const nullish = () => {
+  function getFee(isMember) {
+    return isMember ? "$2.00" : "$10.00";
+  }
+  console.log(getFee(true));
+  // Expected output: "$2.00"
+  console.log(getFee(false));
+  // Expected output: "$10.00"
+  console.log(getFee(null));
+  // Expected output: "$10.00"
 
-    function getFee(isMember) {
-        return isMember ? "$2.00" : "$10.00";
-    }
-    console.log(getFee(true));
-    // Expected output: "$2.00"
-    console.log(getFee(false));
-    // Expected output: "$10.00"
-    console.log(getFee(null));
-    // Expected output: "$10.00"
+  line("9.1 Optional chaining");
+  // Optional chaining operator (?.)
+  cookie1 = { awt: "awt" };
+  cookie2 = null;
+  console.log(cookie1?.awt ? cookie1?.awt : "abc"); // awt
+  console.log(cookie2?.awt ? cookie2?.awt : "abc"); // abc
 
-    line("9.1 Optional chaining");
-    // Optional chaining operator (?.)
-    cookie1 = { awt: "awt" };
-    cookie2 = null;
-    console.log(cookie1?.awt ? cookie1?.awt : "abc"); // awt
-    console.log(cookie2?.awt ? cookie2?.awt : "abc"); // abc
+  line("9.2 Nullish coalescing");
+  // Nullish coalescing operator (??)
+  let str = "some string";
+  const foo1 = str ?? "default string";
+  console.log(foo1);
 
-    line("9.2 Nullish coalescing");
-    // Nullish coalescing operator (??)
-    let str = "some string";
-    const foo1 = str ?? "default string";
-    console.log(foo1);
+  str = null;
+  const foo2 = str ?? "default string";
+  console.log(foo2);
 
-    str = null;
-    const foo2 = str ?? "default string";
-    console.log(foo2);
+  let num = 3;
+  const foo3 = num ?? 7;
+  console.log(foo3);
 
-    let num = 3;
-    const foo3 = num ?? 7;
-    console.log(foo3);
+  num = 0;
+  const foo4 = num ?? 8;
+  console.log(foo4);
 
-    num = 0;
-    const foo4 = num ?? 8;
-    console.log(foo4);
+  num = null;
+  const foo5 = num ?? 8;
+  console.log(foo5);
 
-    num = null;
-    const foo5 = num ?? 8;
-    console.log(foo5);
+  line("9.3 Nullish coalescing assignment");
+  // Nullish coalescing assignment (??=)
+  num = 3;
+  num ??= 7;
+  console.log(num);
 
-    line("9.3 Nullish coalescing assignment");
-    // Nullish coalescing assignment (??=)
-    num = 3;
-    num ??= 7;
-    console.log(num);
+  num = null;
+  num ??= 7;
+  console.log(num);
 
-    num = null;
-    num ??= 7;
-    console.log(num);
+  line();
+  let x = 0; // false
+  let y = 1; // true
 
-    line();
-    let x = 0;
-    let y = 1;
-
-    x &&= 0; // 0
-    console.log(x);
-    x &&= 1; // 0
-    console.log(x);
-    y &&= 1; // 1
-    console.log(y);
-    y &&= 0; // 0
-    console.log(y);
+  x &&= 0; // 0   // x==false && .. -> x = 0  // Not assigned
+  console.log(x);
+  x &&= 1; // 0   // x==false && .. -> x = 0 // Not assigned
+  console.log(x);
+  y &&= 1; // 1   // y==true && .. -> y = 1 // assigned
+  console.log(y);
+  y &&= 0; // 0   // y==true && .. -> y = 0 // assigned
+  console.log(y);
 }
 
 const operators = () => {

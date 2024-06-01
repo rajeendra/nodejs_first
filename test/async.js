@@ -177,7 +177,7 @@ const jobsAsyncUnOrdered = async (job) => {
     job,
   ]);
 
-  console.log(resultsArray);
+  //console.log(resultsArray);
 
   return resultsArray; // return as a Promise
 };
@@ -208,6 +208,7 @@ const jobFour = (results) => {
 // .. use of promise.then and Promise.all
 
 const asyncMain = () => {
+    //jobFlowOne();
     jobFlowTwo();
 }
 
@@ -223,7 +224,7 @@ const jobFlowOne = () => {
   // jobsAsyncUnOrdered execute collection of async job parallelly
   result = jobsAsyncUnOrdered(promiseJobsAsyncOrdered);
   result.then(function (result) {
-    console.log(result);
+    console.log(result);   
     // if you want to chain jobFour agin to another job then ..
     // .. result it should return after enclose with a another Promise ..
     // .. so it could done with the promise.then
@@ -286,6 +287,7 @@ const jobFlowTwo = () => {
     .then((resultArray) => {
       // array of results from async unorded jobs
       console.log(resultArray[resultArray.length - 1].job, "resolved");
+      console.log(resultArray); 
       // process the final result
       jobFour(resultArray);
     });
